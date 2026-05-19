@@ -1,8 +1,25 @@
 # Snake KMP
 
-Um minijogo da cobrinha desenvolvido com **Kotlin Multiplatform (KMP)** e **Compose Multiplatform**, visando Android e iOS.
+Mini game da cobrinha com **Kotlin Multiplatform** e **Compose Multiplatform** para Android e iOS.
 
-## Estrutura do Projeto
-- `composeApp`: Código compartilhado da lógica e interface do jogo.
-- `androidApp`: Entrada específica para Android.
-- `iosApp`: Entrada específica para iOS (SwiftUI).
+## Estrutura
+
+- `composeApp`: módulo compartilhado com lógica e UI do jogo.
+  - `commonMain`: estado, regras do jogo e interface Compose.
+  - `androidMain`: `MainActivity` e manifesto Android.
+  - `iosMain`: `MainViewController` para integração com SwiftUI.
+
+## Requisitos
+
+- JDK 17
+- Android SDK (compileSdk 34)
+
+## Build
+
+```bash
+./gradlew :composeApp:assembleDebug
+```
+
+## iOS
+
+O módulo exporta `MainViewController()` em `iosMain`, que pode ser usado em um app SwiftUI/UIViewControllerRepresentable.
