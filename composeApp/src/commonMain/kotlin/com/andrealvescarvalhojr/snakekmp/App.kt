@@ -43,7 +43,7 @@ fun App() {
 private fun SnakeGameScreen() {
     val game = remember { SnakeGameState() }
 
-    LaunchedEffect(game.isGameOver) {
+    LaunchedEffect(game) {
         while (true) {
             if (!game.isGameOver) {
                 delay(150)
@@ -77,7 +77,7 @@ private fun SnakeGameScreen() {
             Canvas(modifier = Modifier.fillMaxSize()) {
                 val cellSize = size.minDimension / game.gridSize
 
-                game.food.let { food ->
+                game.food?.let { food ->
                     drawRect(
                         color = Color(0xFFFF5252),
                         topLeft = Offset(food.x * cellSize, food.y * cellSize),
