@@ -98,7 +98,12 @@ class SnakeGameState(
         nextDirection = null
         score = 0
         isGameOver = false
-        food = generateFood(initialSnake) ?: Cell(0, 0)
+        val nextFood = generateFood(initialSnake)
+        if (nextFood == null) {
+            isGameOver = true
+        } else {
+            food = nextFood
+        }
     }
 
     private fun initialSnake(): List<Cell> {
